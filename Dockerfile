@@ -12,6 +12,6 @@ RUN npm run build
 WORKDIR /app/back
 RUN npm install
 
-EXPOSE 3002
+EXPOSE 3003
 
 CMD ["npm","start"]
