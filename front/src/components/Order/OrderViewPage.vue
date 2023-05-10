@@ -105,7 +105,7 @@
                     class="py-4 px-6 text-2xl font-bold text-gray-900 text-center whitespace-nowrap dark:text-white"
                   >
                     유저 아이디 : {{ order["order_id"] }} 주문 번호 :
-                    {{ order["order_number"] }} 입고 신청 날짜 :
+                    {{ order["order_number"] }} 주문 날짜 :
                     {{ order["createdAt"] }}
                     <button
                       v-on:click="viewProduct(order)"
