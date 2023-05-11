@@ -1,11 +1,12 @@
 const { defineConfig } = require("@vue/cli-service");
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 module.exports = defineConfig({
-  // configureWebpack: {
-  //   plugins: [new BundleAnalyzerPlugin()],
-  // },
+  configureWebpack: {
+    plugins: [new NodePolyfillPlugin()],
+  },
 
   chainWebpack: (config) => {
     config.plugins.delete("prefetch");
