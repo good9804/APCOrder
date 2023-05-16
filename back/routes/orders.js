@@ -29,6 +29,7 @@ router.post("/api/upload", async (req, res) => {
         order_price: req.body.order.order_price,
         order_status: 0,
         order_others: req.body.order.order_others,
+        order_product_number: req.body.order.order_product_number,
       });
       await new_orders.save();
       res.json({
