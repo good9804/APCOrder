@@ -1,41 +1,20 @@
-#시작
+--- 
+
+상품페이지
 
 ---
 
-## mongodb 다운로드(윈도우 기준)
-
-1. https://www.mongodb.com/try/download/community-kubernetes-operator에서 다운로드
-2. https://www.mongodb.com/try/download/compass 다운로드(mongodb GUI 툴)
-3. MongoDB의 bin폴더 경로 환경설정 등록
-
-4. 이름이 apc 데이터베이스 생성
-5. 왼쪽 하단 \_MONGOSH을 통해 명령어 입력
-
----
-
-use apc
-db.createCollection("users")
-db.users.insert({"userid":"1","password":"$2b$10$OQlrdbdEeQHdIL0iQXNmqe6BfWBdbnYBmWRc/Vpy4iGbVTGQYtAa2","submitrole":"0","role":"0"})
-
----
-
-nginx 설정
-
----
-
-APCYaml 저장소에 있는 nginx.conf를 적용하여 nginx 실행
+![image](https://github.com/Korjw/APCOrder/assets/93375024/a03b29ff-b757-40b5-bfb0-f9f9aad77e44)
 
 ---
 
 ---
 
-windows : start_prod.bat 실행
-Linux(Ubuntu 22.04 LTS) : start.sh 실행
+농산물이력관리정보시스템 연동(OPEN API)
+링크 : https://www.data.go.kr/data/15000761/openapi.do
 
 ---
 
----
-
-localhost 접속
+![image](https://github.com/Korjw/APCOrder/assets/93375024/f80d8c00-66c1-42d1-a5cc-c99bf21500cf)
 
 ---
