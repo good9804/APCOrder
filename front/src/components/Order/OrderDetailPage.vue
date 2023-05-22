@@ -200,7 +200,7 @@ export default {
 
       this.$axios
         .post("/order/api/upload", {
-          userid: this.$store.getters.getUserId,
+          user_id: this.$store.getters.getUserId,
           order: this.order,
         })
         .then((res) => {

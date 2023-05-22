@@ -14,11 +14,12 @@
             id="stats-tab"
             class="inline-block w-full p-4 rounded-tl-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600"
           >
-            날짜 : {{ selectedOrderInfo.createdAt }} 주문 번호 :
-            {{ selectedOrderInfo.order_number }} 유저 아이디 :
-            {{ selectedOrderInfo.order_id }} 총 가격 :
+            날짜 : {{ selected_order_info.createdAt }} 주문 번호 :
+            {{ selected_order_info.order_number }} 유저 아이디 :
+            {{ selected_order_info.order_id }} 총 가격 :
             {{
-              selectedOrderInfo.order_quantity * selectedOrderInfo.order_price
+              selected_order_info.order_quantity *
+              selected_order_info.order_price
             }}
           </div>
         </div>
@@ -32,37 +33,37 @@
             <div class="flex flex-col items-center justify-center">
               <dt class="mb-2 text-3xl font-extrabold">품목</dt>
               <dd class="text-xl text-gray-500 dark:text-white">
-                {{ selectedOrderInfo.order_item }}
+                {{ selected_order_info.order_item }}
               </dd>
             </div>
             <div class="flex flex-col items-center justify-center">
               <dt class="mb-2 text-3xl font-extrabold">수량</dt>
               <dd class="text-xl text-gray-500 dark:text-white">
-                {{ selectedOrderInfo.order_quantity }}
+                {{ selected_order_info.order_quantity }}
               </dd>
             </div>
             <div class="flex flex-col items-center justify-center">
               <dt class="mb-2 text-3xl font-extrabold">가격</dt>
               <dd class="text-xl text-gray-500 dark:text-white">
-                {{ selectedOrderInfo.order_price }}
+                {{ selected_order_info.order_price }}
               </dd>
             </div>
             <div class="flex flex-col items-center justify-center">
               <dt class="mb-2 text-3xl font-extrabold">상태</dt>
               <dd class="text-xl text-gray-500 dark:text-white">
-                {{ selectedOrderInfo.order_status }}
+                {{ selected_order_info.order_status }}
               </dd>
             </div>
             <div class="flex flex-col items-center justify-center">
               <dt class="mb-2 text-3xl font-extrabold">출고여부</dt>
               <dd class="text-xl text-gray-500 dark:text-white">
-                {{ selectedOrderInfo.order_shipped }}
+                {{ selected_order_info.order_shipped }}
               </dd>
             </div>
             <div class="flex flex-col items-center justify-center">
               <dt class="mb-2 text-3xl font-extrabold">기타 문의사항</dt>
               <dd class="text-xl text-gray-500 dark:text-white">
-                {{ selectedOrderInfo.order_others }}
+                {{ selected_order_info.order_others }}
               </dd>
             </div>
           </dl>
@@ -82,7 +83,7 @@
             class="relative max-h-96 overflow-y-scroll sm:rounded-lg"
           >
             <table
-              v-if="orderList.length !== 0"
+              v-if="order_list.length !== 0"
               class="my-3 w-full text-sm text-left text-gray-500 dark:text-gray-400"
             >
               <thead
@@ -96,7 +97,7 @@
               </thead>
               <tbody>
                 <tr
-                  v-for="order in orderList"
+                  v-for="order in order_list"
                   :key="order.idx"
                   class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
@@ -168,10 +169,10 @@ export default {
   components: { ModalTool },
   data() {
     return {
-      orderList: [],
-      selectedOrderInfo: {},
+      order_list: [],
+      selected_order_info: {},
       date: new Date(),
-      allOrderList: [],
+      all_order_list: [],
       showModal: false,
     };
   },
@@ -186,18 +187,18 @@ export default {
           loginUserRole: this.$store.getters.getUserRole,
         })
         .then((res) => {
-          res.data.orderList.forEach((element) => {
+          res.data.order_list.forEach((element) => {
             element["createdAt"] = this.formatDate(element["createdAt"]);
           });
-          this.orderList = res.data.orderList;
-          this.allOrderList = res.data.orderList;
+          this.order_list = res.data.order_list;
+          this.all_order_list = res.data.order_list;
         })
         .catch((err) => {
           console.log(err);
         });
     },
     viewProduct(orderinfo) {
-      this.selectedOrderInfo = orderinfo;
+      this.selected_order_info = orderinfo;
     },
     formatDate(date) {
       var d = new Date(date);
@@ -227,13 +228,13 @@ export default {
   watch: {
     //vuex 변수의 값이 변함을 감지하는 곳
     date() {
-      this.orderList = [];
-      this.allOrderList.forEach((element) => {
+      this.order_list = [];
+      this.all_order_list.forEach((element) => {
         if (this.formatDate(element.createdAt) == this.formatDate(this.date)) {
-          this.orderList.push(element);
+          this.order_list.push(element);
         }
       });
-      console.log(this.orderList);
+      console.log(this.order_list);
     },
   },
 };

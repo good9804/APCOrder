@@ -13,7 +13,7 @@ router.post("/api/upload", async (req, res) => {
     });
   } else {
     const find_orders = await Order.findOne({
-      order_number: req.body.userid + Math.floor(new Date().getTime() / 1000),
+      order_number: req.body.user_id + Math.floor(new Date().getTime() / 1000),
     });
     if (find_orders) {
       res.json({
@@ -22,8 +22,9 @@ router.post("/api/upload", async (req, res) => {
       });
     } else {
       const new_orders = new Order({
-        order_id: req.body.userid,
-        order_number: req.body.userid + Math.floor(new Date().getTime() / 1000),
+        order_id: req.body.user_id,
+        order_number:
+          req.body.user_id + Math.floor(new Date().getTime() / 1000),
         order_item: req.body.order.order_item,
         order_quantity: req.body.order.order_quantity,
         order_price: req.body.order.order_price,
@@ -41,21 +42,21 @@ router.post("/api/upload", async (req, res) => {
 });
 
 router.post("/api/view", async (req, res) => {
-  var orderList;
-  if (req.body.loginUserRole == 0) {
-    orderList = await Order.find({});
+  var order_list;
+  if (req.body.login_user_role == 0) {
+    order_list = await Order.find({});
   } else {
-    orderList = await Order.find({ userid: req.body.userid });
+    order_list = await Order.find({ user_id: req.body.user_id });
   }
-  res.json({ orderList: orderList });
+  res.json({ order_list: order_list });
 });
 
 router.get("/api/view/decline", async (req, res) => {
   try {
-    const orderList = await Order.find({ order_request_cancel: true });
-    res.json({ orderList: orderList });
+    const order_list = await Order.find({ order_request_cancel: true });
+    res.json({ order_list: order_list });
   } catch (err) {
-    res.json({ orderList: [] });
+    res.json({ order_list: [] });
   }
 });
 
@@ -75,10 +76,10 @@ router.post("/api/decline/approve", async (req, res) => {
     await Order.deleteOne({
       order_number: req.body.order.order_number,
     });
-    const orderList = await Order.find({ order_request_cancel: true });
-    res.json({ orderList: orderList });
+    const order_list = await Order.find({ order_request_cancel: true });
+    res.json({ order_list: order_list });
   } catch (err) {
-    res.json({ orderList: [] });
+    res.json({ order_list: [] });
   }
 });
 

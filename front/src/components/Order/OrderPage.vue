@@ -3,9 +3,9 @@
     <div
       class="p-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14"
     >
-      <div v-if="productList.length !== 0" class="grid grid-cols-4 gap-4 mb-4">
+      <div v-if="product_list.length !== 0" class="grid grid-cols-4 gap-4 mb-4">
         <div
-          v-for="product in productList"
+          v-for="product in product_list"
           :key="product.idx"
           class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
@@ -29,7 +29,7 @@
 export default {
   data() {
     return {
-      productList: [],
+      product_list: [],
     };
   },
   mounted() {
@@ -41,13 +41,13 @@ export default {
         .get("/product/api/view", {})
         .then((res) => {
           if (res.data.message == "success") {
-            res.data.productList.forEach((element) => {
+            res.data.product_list.forEach((element) => {
               element.product_image.data = this.arrayBufferToBase64(
                 element.product_image.data
               );
             });
           }
-          this.productList = res.data.productList;
+          this.product_list = res.data.product_list;
         })
         .catch((err) => {
           alert(err);
