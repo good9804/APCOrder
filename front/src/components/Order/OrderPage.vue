@@ -40,7 +40,7 @@ export default {
       this.$axios
         .get("/product/api/view", {})
         .then((res) => {
-          if (res.data.message == "success") {
+          if (res.data.success == true) {
             res.data.product_list.forEach((element) => {
               element.product_image.data = this.arrayBufferToBase64(
                 element.product_image.data

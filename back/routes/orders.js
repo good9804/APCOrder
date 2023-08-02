@@ -9,7 +9,7 @@ router.post("/api/upload", async (req, res) => {
   ) {
     res.json({
       success: false,
-      message: "Fill the form!",
+      message: "항목을 다 입력해주세요.",
     });
   } else {
     const find_orders = await Order.findOne({
@@ -35,7 +35,7 @@ router.post("/api/upload", async (req, res) => {
       await new_orders.save();
       res.json({
         success: true,
-        message: "Success!",
+        message: "입고 성공",
       });
     }
   }
@@ -67,7 +67,7 @@ router.post("/api/decline", async (req, res) => {
   );
   res.json({
     success: true,
-    message: "취소 신청 신청완료!",
+    message: "취소 신청완료!",
   });
 });
 

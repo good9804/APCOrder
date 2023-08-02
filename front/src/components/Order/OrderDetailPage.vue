@@ -179,7 +179,7 @@ export default {
         })
         .then((res) => {
           console.log(res);
-          if (res.data.message == "success") {
+          if (res.data.success == true) {
             res.data.product_info.product_image.data = this.arrayBufferToBase64(
               res.data.product_info.product_image.data
             );
