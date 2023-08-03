@@ -35,7 +35,7 @@ router.post("/api/upload", async (req, res) => {
       await new_orders.save();
       res.json({
         success: true,
-        message: "입고 성공",
+        message: "입고 처리가 완료되었습니다.",
       });
     }
   }
