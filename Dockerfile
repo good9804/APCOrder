@@ -4,8 +4,10 @@ FROM node:18.16.0
 WORKDIR /app
 COPY . .
 
+
 WORKDIR /app/front
 RUN npm install
+RUN npx update-browserslist-db@latest
 
 RUN npm run build
 
