@@ -3,10 +3,11 @@ FROM node:lts-alpine
 
 WORKDIR /app
 COPY . .
-RUN npx update-browserslist-db@latest
+
 
 WORKDIR /app/front
 RUN npm install
+RUN npx update-browserslist-db@latest
 
 RUN npm run build
 
