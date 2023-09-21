@@ -3,6 +3,7 @@ FROM node:lts-alpine
 
 WORKDIR /app
 COPY . .
+npx update-browserslist-db@latest
 
 WORKDIR /app/front
 RUN npm install
